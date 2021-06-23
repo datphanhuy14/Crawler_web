@@ -1,0 +1,25 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Express Nunjucks{% endblock %}</title>
+    {% include "./js.html" %}
+    {% include "./css.html" %}
+</head>
+<body>
+{% include "./header.html" %}<!--Main Navigation-->
+
+{% block content %}
+{% endblock %}
+
+{% include "./pagination.html" %}
+{% include "./footer.html" %}
+{% block js %}
+{% endblock %}
+</body>
+
+</html>
+
+
+<!--Main layout-->

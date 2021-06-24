@@ -12,9 +12,11 @@ module.exports = (sequelize, DataTypes)=>{
         post_title: {
             type: DataTypes.STRING(1234)
         },
-
+        post_img: {
+            type: DataTypes.STRING(1234)
+        },
         post_content: {
-            type: DataTypes.STRING(65000)
+            type: DataTypes.TEXT
         }
     })
     return post;

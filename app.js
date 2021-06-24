@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 let nunjucks = require("nunjucks");
-var crawlerPost = require('./scrawler')
+var crawler = require('./scrawler')
 const models = require('./db');
 
 
@@ -19,13 +19,10 @@ nunjucks.configure("views", {
   express: app,
 });
 //Test
-
+//
 models.sequelize.sync()
-    .then(crawlerPost)
-    .catch((err) => {
-      console.log(err)
-    })
-
+    .then(crawler.crawlerPost)
+// crawlerPost;
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

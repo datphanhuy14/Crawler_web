@@ -6,7 +6,8 @@
     "options" :{
       "host": "localhost",
       "dialect": "postgres",
-      "force": "true"
+      "force": "true",
+      "logging": false
     }
   },
   "test": {

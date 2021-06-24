@@ -6,9 +6,9 @@
     <!--Section: Content-->
     <section class="text-center">
       <h4 class="mb-5"><strong>Latest posts</strong></h4>
-
+<!--      Đang FIX cứng HTMl -->
       <div class="row">
-        <div class="col-lg-4 col-md-12 mb-4">
+        <div class="col-lg-4 col-md-6 mb-4">
           <div class="card">
             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
               <img src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" class="img-fluid" />
@@ -17,7 +17,7 @@
               </a>
             </div>
             <div class="card-body">
-              <h5 class="card-title">Post title</h5>
+              <h5 class="card-title">{{data[1].post_title |dump()|safe}}</h5>
               <p class="card-text">
                 Some quick example text to build on the card title and make up the bulk of the
                 card's content.
@@ -67,7 +67,7 @@
       </div>
 
       <div class="row">
-        <div class="col-lg-4 col-md-12 mb-4">
+        <div class="col-lg-4 col-md-6 mb-4">
           <div class="card">
             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
               <img src="https://mdbootstrap.com/img/new/standard/nature/002.jpg" class="img-fluid" />
@@ -125,11 +125,6 @@
         </div>
       </div>
     </section>
-    <!--Section: Content-->
-
-
-    <!--Main layout-->
-
   </div>
 </main>
 {% endblock %}

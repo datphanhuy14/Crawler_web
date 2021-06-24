@@ -1,12 +1,16 @@
 var express = require('express');
 var router = express.Router();
-const db = require('../db');
+const models = require('../db');
+var crawler = require('../scrawler')
+
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  var post = db.post.findAll()
-  console.log(post);
-  res.render('index', { title: 'Express' });
+router.get('/',  async function(req, res, next) {
+    // models.sequelize.sync()
+    //   .then(crawler.crawlerPost)
+    let getPost =await models.post.findAll({raw: true})
+    // console.log(getPost[1]);
+  res.render('index', { data: getPost });
 });
 
 module.exports = router;

@@ -7,13 +7,16 @@ module.exports = (sequelize, DataTypes)=>{
             primaryKey : true
         },
         link: {
-            type: DataTypes.STRING(1234)
+            type: DataTypes.STRING
+        },
+        post_description :{
+            type: DataTypes.STRING
         },
         post_title: {
-            type: DataTypes.STRING(1234)
+            type: DataTypes.STRING
         },
         post_img: {
-            type: DataTypes.STRING(1234)
+            type: DataTypes.STRING
         },
         post_content: {
             type: DataTypes.TEXT

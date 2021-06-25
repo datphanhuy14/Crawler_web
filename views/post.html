@@ -1,0 +1,21 @@
+{% extends "./layouts/main.html" %}
+
+<!-- Search form -->
+{% block content %}
+        <div class="row tm-row">
+            <div class="col-lg-12 tm-post-col">
+                {% if data %}
+                <div class="tm-post-full">
+                    <div class="mb-5">
+                        <h2 class="pt-2 tm-color-primary tm-post-title">{{ data.post_title }}</h2>
+                        <p class="tm-mb-40">June 16, 2020 posted by Admin Nat</p>
+                        <p>
+                           {{ data.post_content | safe }}
+                        </p>
+                        <span class="d-block text-right tm-color-primary">Creative . Design . Business</span>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+{% endblock %}

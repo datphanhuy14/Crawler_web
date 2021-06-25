@@ -5,7 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 let nunjucks = require("nunjucks");
 var crawler = require('./scrawler')
-const models = require('./db');
+const db = require('./db');
+var cron = require('node-cron');
 
 
 var indexRouter = require('./routes/index');
@@ -20,9 +21,13 @@ nunjucks.configure("views", {
 });
 //Test
 //
-models.sequelize.sync()
-    .then(crawler.crawlerPost)
-// crawlerPost;
+cron.schedule('*/5 * * * *', () => {
+  console.log("chay cron");
+  db.sequelize.sync().then(()=>{
+    console.log("đã kết nôi");
+    crawler.crawlerPost();
+  })
+});
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

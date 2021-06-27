@@ -1,25 +1,25 @@
-<div class="row tm-row tm-mt-100 tm-mb-75">
-    <div class="tm-prev-next-wrapper">
-        <a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20">Prev</a>
-        <a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next">Next</a>
-    </div>
-    <div class="tm-paging-wrapper">
-        <span class="d-inline-block mr-3">Page</span>
-        <nav class="tm-paging-nav d-inline-block">
-            <ul>
-                <li class="tm-paging-item active">
-                    <a href="#" class="mb-2 tm-btn tm-paging-link">1</a>
-                </li>
-                <li class="tm-paging-item">
-                    <a href="#" class="mb-2 tm-btn tm-paging-link">2</a>
-                </li>
-                <li class="tm-paging-item">
-                    <a href="#" class="mb-2 tm-btn tm-paging-link">3</a>
-                </li>
-                <li class="tm-paging-item">
-                    <a href="#" class="mb-2 tm-btn tm-paging-link">4</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</div>
+{% if pages > 0 %}
+    <nav class="my-4" aria-label="...">
+        <ul class="pagination pagination-circle justify-content-center">
+            <li class="page-item">
+                <a class="page-link" href="#" style="color: blue" tabindex="-1" aria-disabled="true">Previous</a>
+            </li>
+            {% for i in range(0,pages)  %}
+                {% set a = i+1 %}
+                {% if a == current %}
+                    <li class="page-item disabled">
+                        <a class="page-link"  href="/{{ a }}">{{ a }}</a>
+                    </li>
+                {% else %}
+                        <li class="page-item">
+                            <a class="page-link" style="color: blue" href="/{{ a }}">{{ a }}</a>
+                        </li>
+                {% endif %}
+
+            {% endfor %}
+            <li class="page-item">
+                <a class="page-link" style="color: blue" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
+{% endif %}

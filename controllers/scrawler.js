@@ -1,4 +1,4 @@
-const db = require("./db"); // import model
+const db = require("../db"); // import model
 const cheerio = require('cheerio');
 const request = require('request-promise');
 
@@ -18,7 +18,6 @@ let crawlerPost = function () {
                     post_description = $(_el).find('.description a').text();
                     link_url = $(_el).find('.thumb-art a').attr('href')
                     // console.log(link_url);
-
                     _news.push({
                         link: link_url,
                         post_img: image_url,
@@ -74,10 +73,10 @@ function getDetail(_new) {
                 post_description: _new.post_description
             };
         })
-        .then(async(_new) => {
+        .then(async (_new) => {
             // console.log(_new.post_img)
-            let check =await db.post.findOne({where:{link : _new.link }});
-            if(!check)
+            let check = await db.post.findOne({where: {link: _new.link}});
+            if (!check)
                 db.post.create(_new)
         })
         .catch((err) => {
@@ -86,8 +85,7 @@ function getDetail(_new) {
         })
 }
 
-let getPost = async (res, req) => {
-    let getValuePost = await db.post.findOne();
-    console.log(getValuePost);
+let search = (searchKey) => {
+    return db.post.findAll({where: {post_title: searchKey}});
 }
-module.exports = {crawlerPost, getPost}
+module.exports = {crawlerPost, search}

@@ -1,25 +1,28 @@
 {% if pages > 0 %}
-    <nav class="my-4" aria-label="...">
-        <ul class="pagination pagination-circle justify-content-center">
-            <li class="page-item">
-                <a class="page-link" href="#" style="color: blue" tabindex="-1" aria-disabled="true">Previous</a>
-            </li>
+<div class="row tm-row tm-mt-100 tm-mb-75">
+    <div class="tm-prev-next-wrapper">
+        <a href="/{{ current -1  }}" class="mb-2 tm-btn tm-btn-primary tm-prev-next">Prev</a>
+        <a href="/{{ current + 1   }}" class="mb-2 tm-btn tm-btn-primary tm-prev-next">Next</a>
+    </div>
+    <div class="tm-paging-wrapper">
+        <span class="d-inline-block mr-3">Page</span>
+        <nav class="tm-paging-nav d-inline-block">
+            <ul>
             {% for i in range(0,pages)  %}
                 {% set a = i+1 %}
                 {% if a == current %}
-                    <li class="page-item disabled">
-                        <a class="page-link"  href="/{{ a }}">{{ a }}</a>
+                    <li class="tm-paging-item active">
+                        <a class="mb-2 tm-btn tm-paging-link"  href="/{{ a }}">{{ a }}</a>
                     </li>
                 {% else %}
-                        <li class="page-item">
-                            <a class="page-link" style="color: blue" href="/{{ a }}">{{ a }}</a>
+                        <li class="tm-paging-item">
+                            <a class="mb-2 tm-btn tm-paging-link" style="color: blue" href="/{{ a }}">{{ a }}</a>
                         </li>
                 {% endif %}
 
             {% endfor %}
-            <li class="page-item">
-                <a class="page-link" style="color: blue" href="#">Next</a>
-            </li>
-        </ul>
-    </nav>
+            </ul>
+        </nav>
+    </div>
+</div>
 {% endif %}

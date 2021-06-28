@@ -17,8 +17,10 @@ let crawlerPost = function () {
                     // console.log(image_url);
                     post_description = $(_el).find('.description a').text();
                     link_url = $(_el).find('.thumb-art a').attr('href')
-                    // console.log(link_url);
+                    let findId = link_url.match(/\d+(.html)$/) //Find id in link
+                    let post_id = findId[0].match(/\d+/)
                     _news.push({
+                        post_id: post_id[0],
                         link: link_url,
                         post_img: image_url,
                         post_description: post_description
@@ -67,6 +69,7 @@ function getDetail(_new) {
             // console.log("GET TIfindOrCreateTLE : ",post_title);
             return {
                 link: _new.link,
+                post_id: _new.post_id,
                 post_title,
                 post_content,
                 post_img: _new.post_img,
@@ -75,7 +78,7 @@ function getDetail(_new) {
         })
         .then(async (_new) => {
             // console.log(_new.post_img)
-            let check = await db.post.findOne({where: {link: _new.link}});
+            let check = await db.post.findOne({where: {post_id: _new.post_id}});
             if (!check)
                 db.post.create(_new)
         })
